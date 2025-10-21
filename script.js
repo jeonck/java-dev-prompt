@@ -2,9 +2,9 @@
 const promptsData = [
     {
         id: 1,
-        title: "Refactor Java Code for Clarity",
+        title: "Make Code Easier to Read",
         category: "refactoring",
-        prompt: "Refactor the following Java code to make it cleaner, more readable, and aligned with best practices. Use modern Java features where possible.",
+        prompt: "Make the following Java code cleaner and easier to understand. Use simpler methods where possible.",
         example: `public class TemperatureConverter {
     public double toFahrenheit(double celsius) {
         double result;
@@ -17,14 +17,14 @@ const promptsData = [
         return celsius * 9 / 5 + 32;
     }
 }`,
-        explanation: "Removes unnecessary variables and makes code easier to read and maintain.",
-        tags: ["refactoring", "readability", "best-practices"]
+        explanation: "Takes out extra variables and makes the code simple to read and understand.",
+        tags: ["refactoring", "readability", "simple"]
     },
     {
         id: 2,
-        title: "Optimize for Performance",
+        title: "Make Code Run Faster",
         category: "performance",
-        prompt: "Analyze the following Java code and suggest performance improvements, explaining the reasons.",
+        prompt: "How can we make the following Java code run faster?",
         example: `public List<String> activeUsers(List<User> users) {
     List<String> names = new ArrayList<>();
     for (User u : users) {
@@ -38,14 +38,14 @@ const promptsData = [
             .map(User::getName)
             .toList();
 }`,
-        explanation: "Using IntStream reduces boilerplate and is more efficient for large data sets. Cleaner and ready for parallel processing.",
-        tags: ["performance", "streams", "efficiency"]
+        explanation: "Uses Java's built-in stream methods to do the same work in less code that runs faster.",
+        tags: ["performance", "faster", "efficient"]
     },
     {
         id: 3,
-        title: "Explain Time Complexity",
+        title: "Make Code Run Much Faster",
         category: "performance",
-        prompt: "Explain the time and space complexity of the following method in Big-O notation, and suggest improvements.",
+        prompt: "Can you make this code run faster? It takes too long with large lists.",
         example: `public boolean containsDuplicate(int[] nums) {
     for (int i = 0; i < nums.length; i++) {
         for (int j = i + 1; j < nums.length; j++) {
@@ -61,14 +61,14 @@ const promptsData = [
     }
     return false;
 }`,
-        explanation: "Reduces time complexity from O(n²) to O(n), teaching efficient coding.",
-        tags: ["complexity", "performance", "efficiency"]
+        explanation: "Changes the code from very slow to fast by using a special Java tool that checks for duplicates quickly.",
+        tags: ["faster", "performance", "efficient"]
     },
     {
         id: 4,
-        title: "Modernize Old Java Code",
+        title: "Simplify Class Creation",
         category: "modernization",
-        prompt: "Convert this Java code to use modern features like Records, Streams, and switch expressions.",
+        prompt: "How can we write this class in a simpler way with newer Java features?",
         example: `public class Student {
     private String name;
     private int age;
@@ -82,14 +82,14 @@ const promptsData = [
     public int getAge(){ return age; }
 }`,
         solution: `public record Student(String name, int age) {}`,
-        explanation: "Records reduce boilerplate, encourages immutability.",
-        tags: ["modernization", "records", "java-14"]
+        explanation: "The new Record feature does the same thing in just one line instead of many lines.",
+        tags: ["modernization", "simpler", "new-feature"]
     },
     {
         id: 5,
-        title: "Improve Exception Handling",
+        title: "Better Error Handling",
         category: "refactoring",
-        prompt: "Suggest better exception handling for this code using best practices.",
+        prompt: "How can we improve this code to handle errors better?",
         example: `try {
     FileInputStream fis = new FileInputStream("data.txt");
 } catch (Exception e) {
@@ -101,14 +101,14 @@ const promptsData = [
     System.err.println("Error: " + e.getMessage());
     throw new RuntimeException(e);
 }`,
-        explanation: "Uses try-with-resources and avoids catching generic exceptions.",
-        tags: ["exception-handling", "best-practices", "resources"]
+        explanation: "Automatically closes the file when done and shows cleaner error messages.",
+        tags: ["error-handling", "safe", "clean"]
     },
     {
         id: 6,
-        title: "Generate Unit Tests",
+        title: "Create Tests for Your Code",
         category: "testing",
-        prompt: "Write JUnit 5 tests for the method below, including edge cases.",
+        prompt: "Write tests for the method below to make sure it works correctly in different situations.",
         example: `public int multiply(int a, int b){
     return a * b;
 }`,
@@ -133,14 +133,14 @@ class CalculatorTest {
         assertEquals(-20, calc.multiply(-4, 5));
     }
 }`,
-        explanation: "Automates test creation, saving time and teaching test coverage.",
-        tags: ["testing", "junit", "coverage"]
+        explanation: "Creates tests that check if your code works in normal cases, with zero, and with negative numbers.",
+        tags: ["testing", "reliable", "verification"]
     },
     {
         id: 7,
-        title: "Detect Concurrency Issues",
+        title: "Make Code Thread-Safe",
         category: "concurrency",
-        prompt: "Analyze for concurrency problems and suggest thread-safe solutions.",
+        prompt: "How can we fix this code so it works correctly when multiple threads use it at the same time?",
         example: `public class Counter {
     private int count = 0;
     public void increment(){ count++; }
@@ -151,27 +151,27 @@ class CalculatorTest {
     public void increment(){ count.incrementAndGet(); }
     public int getCount(){ return count.get(); }
 }`,
-        explanation: "Prevents race conditions and teaches safe multi-threaded programming.",
-        tags: ["concurrency", "thread-safe", "atomic"]
+        explanation: "Fixes problems that happen when multiple parts of your program try to change the same value at once.",
+        tags: ["thread-safe", "multi-threading", "reliable"]
     },
     {
         id: 8,
-        title: "Memory Optimization",
+        title: "Save Memory",
         category: "memory",
-        prompt: "Suggest ways to reduce memory usage in this snippet.",
+        prompt: "How can we make this code use less memory?",
         example: `List<String> names = new ArrayList<>();
 for(int i=0; i<10000; i++){
     names.add("Name" + i);
 }`,
         solution: `List<String> names = new ArrayList<>(10000); // pre-size list`,
-        explanation: "Pre-sizing avoids costly resizing and saves memory.",
-        tags: ["memory", "optimization", "efficiency"]
+        explanation: "Tells the list how many items it will hold, so it doesn't waste memory resizing.",
+        tags: ["memory", "efficient", "optimal"]
     },
     {
         id: 9,
-        title: "Convert Code to Functional Style",
+        title: "Use Modern Java Features",
         category: "modernization",
-        prompt: "Rewrite this code using functional style with Streams and lambdas.",
+        prompt: "Show how to write this code using modern Java features that make it shorter and easier to read.",
         example: `List<Integer> numbers = List.of(1,2,3,4,5);
 List<Integer> evenNumbers = new ArrayList<>();
 for(int n : numbers){
@@ -180,22 +180,22 @@ for(int n : numbers){
         solution: `List<Integer> evenNumbers = numbers.stream()
                                    .filter(n -> n % 2 == 0)
                                    .toList();`,
-        explanation: "Shorter, easier to read, and ready for parallelization.",
-        tags: ["functional", "streams", "lambdas"]
+        explanation: "Does the same thing with less code that's easier to understand and modify.",
+        tags: ["modern", "simpler", "efficient"]
     },
     {
         id: 10,
-        title: "Explain Why Code is Slow",
+        title: "Handle Large Files Better",
         category: "performance",
-        prompt: "Can you explain why this code might be slow? Please suggest improvements, point out the performance bottlenecks, and recommend ways to profile and analyze its performance.",
+        prompt: "Why might this code be slow with large files? How can we make it better?",
         example: `for(String line : Files.readAllLines(Paths.get("largefile.txt"))){
     System.out.println(line);
 }`,
         solution: `try (Stream<String> lines = Files.lines(Paths.get("largefile.txt"))) {
     lines.forEach(System.out::println);
 }`,
-        explanation: "Streams read files lazily instead of loading everything into memory.",
-        tags: ["performance", "memory", "streams", "efficiency"]
+        explanation: "Reads one line at a time instead of loading the entire file into memory at once.",
+        tags: ["performance", "memory", "efficient", "large-files"]
     }
 ];
 
